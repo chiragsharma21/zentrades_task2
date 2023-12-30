@@ -63,6 +63,8 @@ function nextStep() {
 
                 // Display data with the initially selected fields
                 displayDataInTable(sortedProducts, getSelectedFields());
+
+                // Alert to swipe down to see displayed fields
                 alert("Swipe down to see displayed fields.");
             } catch (error) {
                 console.error("Error:", error.message);
@@ -75,6 +77,7 @@ function nextStep() {
         alert("Please choose a file before proceeding.");
     }
 }
+
 
 // Helper function to parse CSV content (assuming comma as delimiter)
 function parseCSV(csvContent) {
