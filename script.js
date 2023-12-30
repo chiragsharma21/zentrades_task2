@@ -10,16 +10,11 @@ function enableStep2() {
     encoding.disabled = !fileInput.files[0];
     hasHeader.disabled = !fileInput.files[0];
 }
-
 function moveSelected(sourceId, targetId) {
     var source = document.getElementById(sourceId);
     var target = document.getElementById(targetId);
-
-    // Keep track of unique values in target list
     var targetValues = Array.from(target.options).map(option => option.value);
-
     Array.from(source.selectedOptions).forEach(option => {
-        // Check if the value is not already in the target list
         if (!targetValues.includes(option.value)) {
             target.add(new Option(option.text, option.value));
             targetValues.push(option.value);
@@ -55,17 +50,10 @@ function nextStep() {
                 } else {
                     throw new Error('Unsupported file type. Please select either CSV or JSON.');
                 }
-
-                var products = data.products;
-
-                // Sort products based on descending popularity
-                var sortedProducts = Object.values(products).sort((a, b) => b.popularity - a.popularity);
-
-                // Display data with the initially selected fields
-                displayDataInTable(sortedProducts, getSelectedFields());
-
-                // Alert to swipe down to see displayed fields
                 alert("Swipe down to see displayed fields.");
+                var products = data.products;
+                var sortedProducts = Object.values(products).sort((a, b) => b.popularity - a.popularity);
+                displayDataInTable(sortedProducts, getSelectedFields());
             } catch (error) {
                 console.error("Error:", error.message);
                 alert(error.message);
@@ -78,11 +66,7 @@ function nextStep() {
     }
 }
 
-
-// Helper function to parse CSV content (assuming comma as delimiter)
 function parseCSV(csvContent) {
-    // Implement your CSV parsing logic here
-    // This is just a simple example, you may need a more robust CSV parser
     var lines = csvContent.split('\n');
     var headers = lines[0].split(',');
     var products = {};
@@ -102,7 +86,6 @@ function parseCSV(csvContent) {
 
 
 function displayDataInTable(products, selectedFields) {
-    // Clear previously displayed data
     clearTable();
 
     var table = document.createElement('table');
@@ -123,14 +106,11 @@ function displayDataInTable(products, selectedFields) {
         var tr = document.createElement('tr');
         selectedFields.forEach(field => {
             var td = document.createElement('td');
-
-            // Display product ID if the field is "productId"
             if (field === "product id") {
                 td.textContent = products;
             } else {
-                td.textContent = product[field] || ''; // Use empty string if the field is not present
+                td.textContent = product[field] || '';
             }
-
             tr.appendChild(td);
         });
         tbody.appendChild(tr);
@@ -142,7 +122,6 @@ function displayDataInTable(products, selectedFields) {
 
 
 function clearTable() {
-    // Remove any previously displayed table
     var existingTable = document.querySelector('.result-table');
     if (existingTable) {
         existingTable.remove();
@@ -158,7 +137,6 @@ function cancel() {
     alert("Table Cleared.");
 }
 
-// Listen for changes in displayed fields and update the table accordingly
 displayedFields.addEventListener('change', function () {
     var fileInput = document.getElementById('fileInput');
     var file = fileInput.files[0];
@@ -171,11 +149,7 @@ displayedFields.addEventListener('change', function () {
             try {
                 var data = JSON.parse(fileContent);
                 var products = data.products;
-
-                // Sort products based on descending popularity
                 var sortedProducts = Object.values(products).sort((a, b) => b.popularity - a.popularity);
-
-                // Display data with the updated selected fields
                 displayDataInTable(sortedProducts, getSelectedFields());
             } catch (error) {
                 console.error("Error parsing JSON:", error);
