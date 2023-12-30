@@ -63,6 +63,7 @@ function nextStep() {
 
                 // Display data with the initially selected fields
                 displayDataInTable(sortedProducts, getSelectedFields());
+                alert("Swipe down to see displayed fields.");
             } catch (error) {
                 console.error("Error:", error.message);
                 alert(error.message);
