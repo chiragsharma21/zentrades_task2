@@ -1,0 +1,136 @@
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f5f5f5;
+    margin: 20px;
+}
+
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+section {
+    margin-bottom: 20px;
+}
+
+label {
+    font-weight: bold;
+}
+
+select,
+input[type="file"] {
+    width: 100%;
+    padding: 10px;
+    margin: 8px 0;
+    box-sizing: border-box;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+input[type="file"] {
+    cursor: pointer;
+}
+
+/* Styling for shift buttons */
+.shift-button {
+    display: block;
+    margin: 10px 0;
+    padding: 5px 10px;
+    background-color: #0e100e;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.shift-button:hover {
+    background-color: #45a049;
+}
+
+/* Styling for Next and Cancel buttons */
+.button1-container {
+    display: block;
+    margin-top: 5px;
+}
+
+.button2-container {
+    display: block;
+    margin-top: 1px;
+}
+
+.next-button{
+    flex: 1;
+    margin: 10px;
+    padding: 10px 15px;
+    background-color: #29962f;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;  
+}
+.cancel-button {
+    flex: 1;
+    margin: 10px;
+    padding: 10px 15px;
+    background-color: #ff0000;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.next-button:hover{
+    background-color: #59c45f;
+}
+.cancel-button:hover {
+    background-color: #c63b3b;
+}
+
+.error-message {
+    color: #ff0000;
+    margin-top: 10px;
+}
+
+.field-container {
+    display: flex;
+    align-items: center;
+}
+
+.column {
+    flex: 1;
+    margin-right: 20px;
+}
+
+.button-container {
+    display: block;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 20px;
+    margin-right: 5px;
+}
+
+.result-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+.result-table th,
+.result-table td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: left;
+}
+
+.result-table th {
+    background-color: #4caf50;
+    color: white;
+}
+
+.result-table tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
